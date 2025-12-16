@@ -1,0 +1,73 @@
+初级：基础嵌入与简单数据交互（掌握栈操作）
+
+嵌入Lua并执行简单脚本
+目标：从C++创建Lua状态，加载并执行一个Lua字符串脚本。
+要求：脚本打印"Hello from Lua"，C++端捕获执行错误并打印。
+提示：使用luaL_newstate()、luaL_openlibs()、luaL_dostring()。
+C++向Lua传递基本类型变量
+目标：C++设置Lua全局变量（number、string、boolean），Lua脚本读取并打印它们。
+要求：传递一个int、一个std::string、一个bool到Lua全局。
+提示：用lua_pushnumber()、lua_pushstring()、lua_pushboolean()、lua_setglobal()。
+Lua向C++返回基本类型
+目标：执行Lua脚本返回一个值，C++读取它。
+要求：Lua脚本返回一个计算结果（如两个数的和），C++打印返回值。
+提示：用lua_getglobal()获取函数，lua_pcall()调用，检查返回值数量，用lua_tonumber()等读取。
+注册C++函数给Lua调用
+目标：定义一个C函数（如计算两个数的平均值），注册到Lua，让Lua脚本调用它。
+要求：Lua传入两个number，C函数返回平均值。
+提示：定义static int cpp_avg(lua_State* L)，用lua_pushcfunction()和lua_setglobal()注册。
+
+中级：函数调用与table交互（涉及table结构）
+
+C++调用Lua函数（带参数和多返回值）
+目标：C++调用Lua中一个带参数的函数，并处理多返回值。
+要求：Lua函数接受两个number，返回它们的和与差；C++传入参数并打印结果。
+提示：用lua_getglobal()获取函数，push参数，lua_pcall()，检查返回值数量。
+操作Lua table（数组式）
+目标：C++创建一个Lua table（作为数组），填充数据，传递给Lua脚本处理。
+要求：C++创建table {1,4,9,16}（平方数），Lua脚本计算总和并返回给C++。
+提示：用lua_newtable()，循环lua_pushnumber()和lua_rawseti()填充。
+操作Lua table（键值式）
+目标：C++创建一个关联table（如配置表），Lua读取并修改后返回。
+要求：table如{name="Player", hp=100, mp=50}，Lua增加一个key "level=1"，C++读取修改后table。
+提示：用lua_newtable()，lua_pushstring() + lua_setfield()设置字段；读取用lua_getfield()。
+Lua table遍历与复杂结构
+目标：C++传递一个嵌套table给Lua，Lua遍历并返回统计信息。
+要求：嵌套table如{pos={x=10,y=20}, items={"sword","shield"}}，Lua返回items数量和pos的总和。
+提示：C++构建嵌套table，Lua用pairs()/ipairs()遍历。
+
+高级：userdata、类绑定与模块（涉及userdata和metatable）
+
+使用userdata传递C++对象
+目标：创建一个简单的C++结构体，用userdata传递到Lua，让Lua调用C++方法。
+要求：定义struct Point {int x,y;}，注册add方法（返回新Point），Lua创建并操作Point。
+提示：用lua_newuserdata()分配，设置metatable，注册__add等元方法。
+手动绑定C++类
+目标：绑定一个C++类（如Vector2D，有add、length方法），支持Lua创建实例并调用。
+要求：用userdata + metatable实现__gc（析构）、__index等。
+提示：分配userdata时存放this指针，方法函数从栈取userdata。
+使用sol2绑定C++类（推荐现代方式）
+目标：切换到sol2库，绑定同一个Vector2D类，包括构造函数、成员函数、属性。
+要求：Lua能new Vector2D(3,4)，调用:length()并add另一个vector。
+提示：用sol::state，luabind_class等语法（sol2非常简洁）。
+使用LuaBridge绑定类
+目标：用LuaBridge绑定一个带继承的C++类（如Base -> Derived）。
+要求：Lua创建Derived实例，调用基类和派生类方法。
+提示：LuaBridge头文件式绑定，支持STL容器自动转换。
+
+进阶：Qt相关交互与实际应用
+
+绑定Qt对象到Lua
+目标：创建一个QObject子类（如MyWidget，有signal/slots），用sol2或LuaBridge暴露给Lua。
+要求：Lua脚本连接signal，调用slot修改Qt属性（如改变 QLabel 文本）。
+提示：Qt对象需小心生命周期（用parent或智能指针），sol2支持signal绑定。
+综合项目：配置系统
+目标：用Lua table作为配置文件，C++读取并验证；同时暴露C++配置类给Lua修改。
+要求：支持嵌套table、默认值验证，错误时抛Lua错误。
+提示：结合table遍历、userdata，实现双向配置热加载。
+性能优化练习
+目标：实现一个大数据table传递（万级元素数组），比较手动C API vs sol2的性能。
+要求：测量时间，优化栈操作避免频繁push/pop。
+提示：用lightuserdata或直接引用table。
+
+这些题目可以逐步完成，先掌握C API（底层理解），再用绑定库（实际开发高效）。如果遇到具体代码问题，可以提供你的实现，我可以帮你调试或扩展。加油练习，Lua与C++交互掌握后会非常强大，尤其在游戏、工具或Qt插件开发中！

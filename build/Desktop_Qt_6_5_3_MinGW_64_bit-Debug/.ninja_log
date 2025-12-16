@@ -1,0 +1,18 @@
+# ninja log v6
+349	2004	7875592383224752	CMakeFiles/LuaTest.dir/LuaTest_autogen/mocs_compilation.cpp.obj	156e95a09b5cab00
+10	75	7875595209761169	LuaTest_autogen/timestamp	7056fced7676ef67
+75	1737	7875595210413678	CMakeFiles/LuaTest.dir/mainwindow.cpp.obj	57a154d5143af17
+10	75	7875595209761169	D:/myfile/LuaTest/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/LuaTest_autogen/mocs_compilation.cpp	7056fced7676ef67
+10	75	7875595209761169	LuaTest_autogen/mocs_compilation.cpp	7056fced7676ef67
+350	2174	7875592383234781	CMakeFiles/LuaTest.dir/main.cpp.obj	eb0012e26d9b8410
+10	75	7875595209761169	D:/myfile/LuaTest/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/LuaTest_autogen/timestamp	7056fced7676ef67
+1737	1882	7875595227035417	LuaTest.exe	3da7881a0ed693d9
+4	574	7875601014593210	build.ninja	a5553144453ee5dd
+9	43	7875601015262347	luafile/.copied	f1d73d826206faa7
+9	43	7875601015262347	D:/myfile/LuaTest/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/luafile/.copied	f1d73d826206faa7
+8	71	7875601014930867	LuaTest_autogen/timestamp	7056fced7676ef67
+8	71	7875601014930867	LuaTest_autogen/mocs_compilation.cpp	7056fced7676ef67
+8	71	7875601014930867	D:/myfile/LuaTest/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/LuaTest_autogen/timestamp	7056fced7676ef67
+8	71	7875601014930867	D:/myfile/LuaTest/build/Desktop_Qt_6_5_3_MinGW_64_bit-Debug/LuaTest_autogen/mocs_compilation.cpp	7056fced7676ef67
+72	1938	7875601015575166	CMakeFiles/LuaTest.dir/mainwindow.cpp.obj	57a154d5143af17
+1938	2175	7875601034234982	LuaTest.exe	3da7881a0ed693d9
