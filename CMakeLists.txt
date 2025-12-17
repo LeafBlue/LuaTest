@@ -10,10 +10,13 @@ qt_add_executable(LuaTest
     main.cpp
     mainwindow.cpp
     mainwindow.h
+    sol.hpp
 )
 
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lualoader/include)
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR})
 
 target_link_libraries(LuaTest
     PRIVATE

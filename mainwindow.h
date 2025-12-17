@@ -23,8 +23,23 @@ public:
 
     void test2();
 
+    void test3();
+
+    void test4();
+
+    static int cfunc1(lua_State *l_);
 
 
+    void test5();
+
+    void test6();
+
+    void test7();
+
+    void test8();
+
+
+    void test9();
 
 
 
